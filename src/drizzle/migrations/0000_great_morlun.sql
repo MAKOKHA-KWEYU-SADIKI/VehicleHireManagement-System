@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"full_name" text,
 	"email" text,
 	"contact_phone" text,
-	"created_at" timestamp,
+	"created_at" text,
 	"updated_at" timestamp
 );
 --> statement-breakpoint
