@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS "Authendication" (
 	"auth_id" serial PRIMARY KEY NOT NULL,
 	"user_id" integer,
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "booking" (
@@ -14,8 +14,8 @@ CREATE TABLE IF NOT EXISTS "booking" (
 	"return_date" text,
 	"total_amount" text,
 	"booking_status" text DEFAULT 'pending',
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "customerSupport" (
@@ -24,8 +24,8 @@ CREATE TABLE IF NOT EXISTS "customerSupport" (
 	"subject" text,
 	"description" text,
 	"status" text,
-	"created_at" timestamp,
-	"updated_at" text
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "location" (
@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS "location" (
 	"name" text,
 	"address" text,
 	"contact_phone" text,
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "management" (
@@ -45,19 +45,19 @@ CREATE TABLE IF NOT EXISTS "management" (
 	"current_value" text,
 	"maintainance_cost" text,
 	"status" text,
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "payment" (
 	"payment_id" serial PRIMARY KEY NOT NULL,
 	"amount" text,
 	"payment_status" text DEFAULT 'pending',
-	"payment_date" timestamp,
+	"payment_date" text,
 	"method" text,
 	"transaction_id" integer,
-	"created_at" timestamp,
-	"udated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"udated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "specifications" (
@@ -78,16 +78,16 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"full_name" text,
 	"email" text,
 	"contact_phone" text,
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "vehicle" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"vehicleSpec_id" integer,
 	"avalilability" text,
-	"created_at" timestamp,
-	"updated_at" timestamp
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
 );
 --> statement-breakpoint
 DO $$ BEGIN
@@ -103,7 +103,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "booking" ADD CONSTRAINT "booking_vehicle_id_vehicle_id_fk" FOREIGN KEY ("vehicle_id") REFERENCES "public"."vehicle"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "booking" ADD CONSTRAINT "booking_vehicle_id_specifications_vehicle_id_fk" FOREIGN KEY ("vehicle_id") REFERENCES "public"."specifications"("vehicle_id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -121,7 +121,7 @@ EXCEPTION
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- ALTER TABLE "management" ADD CONSTRAINT "management_vehicle_id_vehicle_id_fk" FOREIGN KEY ("vehicle_id") REFERENCES "public"."vehicle"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "management" ADD CONSTRAINT "management_vehicle_id_specifications_vehicle_id_fk" FOREIGN KEY ("vehicle_id") REFERENCES "public"."specifications"("vehicle_id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

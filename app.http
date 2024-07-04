@@ -1,0 +1,145 @@
+GET http://localhost:3000/user
+###
+GET http://localhost:3000/user/6
+###
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com",
+"contact_phone":"+2547634783437"
+}
+###
+PUT http://localhost:3000/user/8
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com"
+}
+###
+DELETE http://localhost:3000/user/7
+###
+GET http://localhost:3000/vehicle
+###
+GET http://localhost:3000/vehicle/2
+###
+POST http://localhost:3000/vehicle
+Content-Type: application/json
+
+{
+  "vehicle_id": 2,
+  "avalilability":"davailable"
+}
+###
+PUT http://localhost:3000/vehicle/1
+Content-Type: application/json
+
+{
+"avalilability":"unavailable"
+}
+###
+DELETE http://localhost:3000/vehicle/1
+###
+GET http://localhost:3000/specs
+###
+GET http://localhost:3000/specs/1
+###
+POST http://localhost:3000/specs
+Content-Type: application/json
+
+{
+  
+  "manufacture": "BMW",
+  "model": "nissan",
+  "year": "2024",
+  "fuel_type": "disel",
+  "engine_capacity": "great1.0-1.2 Litre Engines",
+  "transmission": "done",
+  "color": "blue",
+  "seating_capacity": 4,
+  "features": "medium"
+}
+###
+PUT http://localhost:3000/specs/1
+Content-Type: application/json
+
+{
+"year": "July 2024",
+"engine_capacity": "great1.0-1.2 Litre Engines",
+}
+###
+DELETE http://localhost:3000/specs/4
+###
+GET http://localhost:3000/manage
+###
+GET http://localhost:3000/manage/2
+###
+POST http://localhost:3000/manage
+Content-Type: application/json
+
+{
+    "vehicle_id": 3,
+    "acquisition_date": "2023-09-09",
+    "depreciation_rate": "4%",
+    "current_value": "100000000",
+    "maintainance_cost": "30000",
+    "status": "done"
+}
+###
+PUT http://localhost:3000/manage/2
+Content-Type: application/json
+
+{
+"status": "done"
+}
+###
+DELETE http://localhost:3000/manage/7
+###
+GET http://localhost:3000/locate
+###
+GET http://localhost:3000/locate/1
+###
+POST http://localhost:3000/locate
+Content-Type: application/json
+
+{
+  "name": "Riyadh",
+  "address": "323makka",
+  "contact_phone": "+323732332"
+}
+###
+PUT http://localhost:3000/locate/1
+Content-Type: application/json
+
+{
+"address": "50Riyadh"
+}
+###
+DELETE http://localhost:3000/locate/7
+###
+GET http://localhost:3000/customer
+###
+GET http://localhost:3000/customer/1
+###
+POST http://localhost:3000/customer
+Content-Type: application/json
+
+{
+  
+  "user_id": 3,
+  "subject": "HIRING",
+  "description": "need a vehicle",
+  "status": "pending"
+}
+###
+PUT http://localhost:3000/customer/1
+Content-Type: application/json
+
+{
+"address": "50Riyadh"
+}
+###
+DELETE http://localhost:3000/customer/7
+###

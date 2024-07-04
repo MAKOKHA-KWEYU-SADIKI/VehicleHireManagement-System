@@ -1,5 +1,5 @@
 {
-  "id": "60f2615b-4720-4091-9785-f4e4e395a36d",
+  "id": "14a1a2de-d780-4a31-97e9-852cb80793cb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -24,13 +24,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -109,13 +111,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -133,15 +137,15 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "booking_vehicle_id_vehicle_id_fk": {
-          "name": "booking_vehicle_id_vehicle_id_fk",
+        "booking_vehicle_id_specifications_vehicle_id_fk": {
+          "name": "booking_vehicle_id_specifications_vehicle_id_fk",
           "tableFrom": "booking",
-          "tableTo": "vehicle",
+          "tableTo": "specifications",
           "columnsFrom": [
             "vehicle_id"
           ],
           "columnsTo": [
-            "id"
+            "vehicle_id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -201,13 +205,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "text",
+          "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -261,13 +267,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -325,26 +333,28 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "management_vehicle_id_vehicle_id_fk": {
-          "name": "management_vehicle_id_vehicle_id_fk",
+        "management_vehicle_id_specifications_vehicle_id_fk": {
+          "name": "management_vehicle_id_specifications_vehicle_id_fk",
           "tableFrom": "management",
-          "tableTo": "vehicle",
+          "tableTo": "specifications",
           "columnsFrom": [
             "vehicle_id"
           ],
           "columnsTo": [
-            "id"
+            "vehicle_id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
@@ -378,7 +388,7 @@
         },
         "payment_date": {
           "name": "payment_date",
-          "type": "timestamp",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -398,13 +408,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "udated_at": {
           "name": "udated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -514,13 +526,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},
@@ -554,13 +568,15 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {},

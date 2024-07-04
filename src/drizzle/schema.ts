@@ -8,16 +8,16 @@ export const TableUser=pgTable("users",{
     user_id:serial("id").primaryKey(),
     full_name:text("full_name"),
     email:text("email"),
-    contact_pnone:text("contact_phone"),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("updated_at")
+    contact_phone:text("contact_phone"),
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 })
 export const TableVehicle=pgTable("vehicle",{
-    vehicle_id:serial("id").primaryKey(),
-    vehicleSpec_id:integer("vehicleSpec_id").references(()=>TableSpecifications.vehicle_id,{onDelete:"cascade"}),
+    vehicleSpecs_id:serial("id").primaryKey(),
+    vehicle_id:integer("vehicleSpec_id").references(()=>TableSpecifications.vehicle_id,{onDelete:"cascade"}),
     avalilability:text("avalilability"),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("updated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 })
 export const TableSpecifications=pgTable("specifications",{
     vehicle_id:serial("vehicle_id").primaryKey(),
@@ -34,30 +34,30 @@ export const TableSpecifications=pgTable("specifications",{
 export const TableBooking=pgTable("booking",{
     booking_id:serial("booking _id").primaryKey(),
     user_id:integer("user_id").references(()=>TableUser.user_id,{onDelete:"cascade"}),
-    vehicle_id:integer("vehicle_id").references(()=>TableVehicle.vehicle_id,{onDelete:"cascade"}),
+    vehicle_id:integer("vehicle_id").references(()=>TableSpecifications.vehicle_id,{onDelete:"cascade"}),
     location_id:integer("location_id").references(()=>TableLocationBranches.location_id,{onDelete:"cascade"}),
     booking_date:text("booking_date"),
     return_date:text("return_date"),
     total_amount:text("total_amount"),
     booking_status:text("booking_status").default("pending"),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("updated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 })
 export const TablePayment=pgTable("payment",{
     payment_id:serial("payment_id").primaryKey(),
     amount:text("amount"),
     payment_status:text("payment_status").default("pending"),
-    payment_date:timestamp("payment_date"),
+    payment_date:text("payment_date"),
     payment_method:text("method"),
     transaction_id:integer("transaction_id"),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("udated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("udated_at").defaultNow()
 })
 export const TableAuthendication=pgTable("Authendication",{
     auth_id:serial("auth_id").primaryKey(),
     user_id:integer("user_id").references(()=>TableUser.user_id,{onDelete:"cascade"}),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("updated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 })
 export const TableCustomerSupport=pgTable("customerSupport",{
     ticket_id:serial("ticket_id").primaryKey(),
@@ -65,28 +65,28 @@ export const TableCustomerSupport=pgTable("customerSupport",{
     subject:text("subject"),
     description:text("description"),
     status:text("status"),
-    created_at:timestamp("created_at"),
-    updated_at:text("updated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 })
 export const TableLocationBranches=pgTable("location",{
     location_id:serial("location_id").primaryKey(),
     name:text("name"),
     address:text("address"),
     contact_phone:text("contact_phone"),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("updated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 
 })
 export const TableManagement=pgTable("management",{
     fleet_id:serial("fleet_id").primaryKey(),
-    vehicle_id:integer("vehicle_id").references(()=>TableVehicle.vehicle_id,{onDelete:"cascade"}),
+    vehicle_id:integer("vehicle_id").references(()=>TableSpecifications.vehicle_id,{onDelete:"cascade"}),
     acquisition_date:text("date"),
     depreciation_rate:text("depreciation_rate"),
     current_value:text("current_value"),
     maintainance_cost:text("maintainance_cost"),
     status:text("status"),
-    created_at:timestamp("created_at"),
-    updated_at:timestamp("updated_at")
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
 })
 export const specsVehicleRelations = relations(TableSpecifications,({one,many})=>({
     specs:many(TableVehicle),
