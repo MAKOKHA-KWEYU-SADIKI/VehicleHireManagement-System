@@ -1,18 +1,18 @@
-// import{Hono} from "hono"
-// import { Context } from "hono";
-// import { listuser, getuser, createuser, updateuser, deleteuser } from "./user.controller"
-// import { zValidator } from "@hono/zod-validator";
-// import { userSchema } from "../validator";
-// export const userRouter=new Hono();
-// userRouter.get("/user", listuser);
-// userRouter.get("/user/:id", getuser)
+import{Hono} from "hono"
+import { Context } from "hono";
+import { listbook, getbook, createbook, updatebook, deletebook } from "./booking.controller"
+import { zValidator } from "@hono/zod-validator";
+import { bookSchema } from "../validator";
+export const bookRouter=new Hono();
+bookRouter.get("/book", listbook);
+bookRouter.get("/book/:id", getbook)
 
-// userRouter.post("/user", zValidator('json', userSchema, (result, c) => {
-//     if (!result.success) {
-//         return c.json(result.error, 400)
-//     }
-// }), createuser)
+bookRouter.post("/book", zValidator('json', bookSchema, (result, c) => {
+    if (!result.success) {
+        return c.json(result.error, 400)
+    }
+}), createbook)
 
-// userRouter.put("/user/:id", updateuser)
-// userRouter.delete("/user/:id", deleteuser)
+bookRouter.put("/book/:id", updatebook)
+bookRouter.delete("/book/:id", deletebook)
 

@@ -1,79 +1,79 @@
-// import { Context } from "hono";
-// import { userService, getuserService, createuserService, updateuserService, deleteuserService, } from "./user.sevice";
-// export const listuser = async (c: Context) => {
-//     try {
+import { Context } from "hono";
+import { bookService, getbookService, createbookService, updatebookService, deletebookService, } from "./booking.service";
+export const listbook = async (c: Context) => {
+    try {
         
 
-//         const limit = Number(c.req.query('limit'))
+        const limit = Number(c.req.query('limit'))
 
-//         const data = await userService(limit);
-//         if (data == null || data.length == 0) {
-//             return c.text("user not found", 404)
-//         }
-//         return c.json(data, 200);
-//     } catch (error: any) {
-//         return c.json({ error: error?.message }, 400)
-//     }
-// }
+        const data = await bookService(limit);
+        if (data == null || data.length == 0) {
+            return c.text("book not found", 404)
+        }
+        return c.json(data, 200);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400)
+    }
+}
 
-// export const getuser = async (c: Context) => {
-//     const id = parseInt(c.req.param("id"));
-//     if (isNaN(id)) return c.text("Invalid ID", 400);
+export const getbook = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
 
-//     const user = await getuserService(id);
-//     if (user == undefined) {
-//         return c.text("user not found", 404);
-//     }
-//     return c.json(user, 200);
-// }
-// export const createuser = async (c: Context) => {
-//     try {
-//         const user = await c.req.json();
-//         const createduser = await createuserService(user);
+    const book = await getbookService(id);
+    if (book == undefined) {
+        return c.text("book not found", 404);
+    }
+    return c.json(book, 200);
+}
+export const createbook = async (c: Context) => {
+    try {
+        const book = await c.req.json();
+        const createdbook = await createbookService(book);
 
 
-//         if (!createduser) return c.text("user not created", 404);
-//         return c.json({ msg: createduser }, 201);
+        if (!createdbook) return c.text("booking unsuccessful", 404);
+        return c.json({ msg: createdbook }, 201);
 
-//     } catch (error: any) {
-//         return c.json({ error: error?.message }, 400)
-//     }
-// }
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400)
+    }
+}
 
-// export const updateuser = async (c: Context) => {
-//     const id = parseInt(c.req.param("id"));
-//     if (isNaN(id)) return c.text("Invalid ID", 400);
+export const updatebook = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
 
-//     const state = await c.req.json();
-//     try {
+    const state = await c.req.json();
+    try {
        
-//         const searcheduser = await getuserService(id);
-//         if (searcheduser == undefined) return c.text("user not found", 404);
+        const searchedbook = await getbookService(id);
+        if (searchedbook == undefined) return c.text("booking unavailable", 404);
         
-//         const res = await updateuserService(id, state);
+        const res = await updatebookService(id, state);
         
-//         if (!res) return c.text("user not updated", 404);
+        if (!res) return c.text("booking not updated", 404);
 
-//         return c.json({ msg: res }, 201);
-//     } catch (error: any) {
-//         return c.json({ error: error?.message }, 400)
-//     }
-// }
+        return c.json({ msg: res }, 201);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400)
+    }
+}
 
-// export const deleteuser = async (c: Context) => {
-//     const id = Number(c.req.param("id"));
-//     if (isNaN(id)) return c.text("Invalid ID", 400);
+export const deletebook = async (c: Context) => {
+    const id = Number(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
 
-//     try {
-//         //search for the user
-//         const user = await getuserService(id);
-//         if (user == undefined) return c.text("user not found", 404);
-//         //deleting the user
-//         const res = await deleteuserService(id);
-//         if (!res) return c.text("user not deleted", 404);
+    try {
+        //search for the booking
+        const book = await getbookService(id);
+        if (book == undefined) return c.text("booking not found", 404);
+        //deleting the booking
+        const res = await deletebookService(id);
+        if (!res) return c.text("booking not deleted", 404);
 
-//         return c.json({ msg: res }, 201);
-//     } catch (error: any) {
-//         return c.json({ error: error?.message }, 400)
-//     }
-// }
+        return c.json({ msg: res }, 201);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400)
+    }
+}

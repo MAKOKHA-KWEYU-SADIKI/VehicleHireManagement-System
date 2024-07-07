@@ -1,25 +1,4 @@
-GET http://localhost:3000/user
-###
-GET http://localhost:3000/user/6
-###
-POST http://localhost:3000/user
-Content-Type: application/json
 
-{
-"full_name":"Abdurahman",
-"email":"abdulrahman@gmail.com",
-"contact_phone":"+2547634783437"
-}
-###
-PUT http://localhost:3000/user/8
-Content-Type: application/json
-
-{
-"full_name":"Abdurahman",
-"email":"abdulrahman@gmail.com"
-}
-###
-DELETE http://localhost:3000/user/7
 ###
 GET http://localhost:3000/vehicle
 ###
@@ -143,3 +122,96 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/customer/7
 ###
+GET http://localhost:3000/book
+###
+GET http://localhost:3000/book/6
+###
+POST http://localhost:3000/book
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com",
+"contact_phone":"+2547634783437"
+}
+###
+PUT http://localhost:3000/book/8
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com"
+}
+###
+DELETE http://localhost:3000/book/7
+
+###
+GET http://localhost:3000/payment
+###
+GET http://localhost:3000/payment/1
+###
+POST http://localhost:3000/payment
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com",
+"contact_phone":"+2547634783437"
+}
+###
+PUT http://localhost:3000/payment/8
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com"
+}
+###
+DELETE http://localhost:3000/payment/7
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+"user_id":1,
+"email":"abdulrahman@alli",
+"password":"pass123",
+"role":"admin"
+}
+
+###
+POST  http://localhost:3000/login
+Content-Type: application/json
+
+{
+"email":"abdulrahman@alli",
+"password":"pass123"
+}
+
+###
+GET http://localhost:3000/user
+###
+GET http://localhost:3000/auth/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwMzc1MzUwfQ.sDQJsv5QFVYj8zG2a0qDNz_MzUUMmC44BuLIZbSLw-Q
+###
+GET http://localhost:3000/auth/user/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwMzc1NTQ3fQ.rtS0JCJxl4ZuK0it8nsyFxXuLqKUlKjIX7MzxwgsdY4
+###
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com",
+"contact_phone":"+2547634783437"
+}
+###
+PUT http://localhost:3000/user/8
+Content-Type: application/json
+
+{
+"full_name":"Abdurahman",
+"email":"abdulrahman@gmail.com"
+}
+###
+DELETE http://localhost:3000/user/7

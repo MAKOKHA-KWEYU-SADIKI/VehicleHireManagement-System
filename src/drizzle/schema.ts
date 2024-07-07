@@ -1,5 +1,5 @@
 //import { timestamp } from "drizzle-orm/mysql-core";
-import { pgTable } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable } from "drizzle-orm/pg-core";
 import { PgTable,timestamp,serial,text } from "drizzle-orm/pg-core";
 import { timeStamp } from "console";
 import { integer } from "drizzle-orm/pg-core";
@@ -49,16 +49,26 @@ export const TablePayment=pgTable("payment",{
     payment_status:text("payment_status").default("pending"),
     payment_date:text("payment_date"),
     payment_method:text("method"),
-    transaction_id:integer("transaction_id"),
+    transaction_id:text("transaction_id"),
     created_at:timestamp("created_at").defaultNow(),
     updated_at:timestamp("udated_at").defaultNow()
 })
+export const roleEnum=pgEnum("role",["admin","user"])
 export const TableAuthendication=pgTable("Authendication",{
     auth_id:serial("auth_id").primaryKey(),
     user_id:integer("user_id").references(()=>TableUser.user_id,{onDelete:"cascade"}),
+    password:text("password"),
+    email:text("email"),
     created_at:timestamp("created_at").defaultNow(),
-    updated_at:timestamp("updated_at").defaultNow()
+    updated_at:timestamp("updated_at").defaultNow(),
+    role:roleEnum("role").default("user")
 })
+export const AuthonUser=relations(TableAuthendication,({one})=>({
+    user:one(TableUser,{
+        fields:[TableAuthendication.user_id],
+        references:[TableUser.user_id]
+    })
+}))
 export const TableCustomerSupport=pgTable("customerSupport",{
     ticket_id:serial("ticket_id").primaryKey(),
     user_id:integer("user_id").references(()=>TableUser.user_id,{onDelete:"cascade"}),
@@ -132,17 +142,17 @@ export const vehicleLocationRelations = relations(TableBooking, ({ one }) => ({
         references: [TableLocationBranches.location_id]
     })
 }));
-export const UserAuthRelations = relations(TableUser,({one,many})=>({
-    authUser:many(TableAuthendication),
-}));
+// export const UserAuthRelations = relations(TableUser,({one,many})=>({
+//     authUser:many(TableAuthendication),
+// }));
 
 
-export const AuthUserRelations = relations(TableAuthendication, ({ one }) => ({
-    auth: one(TableUser, {
-        fields: [TableAuthendication.user_id],
-        references: [TableUser.user_id]
-    })
-}));
+// export const AuthUserRelations = relations(TableAuthendication, ({ one }) => ({
+//     auth: one(TableUser, {
+//         fields: [TableAuthendication.user_id],
+//         references: [TableUser.user_id]
+//     })
+// }));
 export const customerUseRelations = relations(TableUser,({one,many})=>({
     customer:many(TableCustomerSupport),
 }));

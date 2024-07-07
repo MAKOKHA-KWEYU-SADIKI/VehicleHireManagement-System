@@ -28,6 +28,10 @@ import { specsRouter } from './specification/specs.router'
 import { manageRouter } from './management/manager.router'
 import { locateRouter } from './location/location.router'
 import { customerRouter } from './customer/customer.router'
+import { bookRouter } from './booking/booking.router'
+import { authRouter } from './Auth/auth.router'
+import { paymentRouter } from './payment/payment.router'
+
 
 app.route('/',userRouter)
 app.route('/',vehicleRouter)
@@ -35,6 +39,10 @@ app.route('/',specsRouter)
 app.route('/',manageRouter)
 app.route('/',locateRouter)
 app.route('/',customerRouter)
+app.route('/',bookRouter)
+app.route('/',authRouter)
+app.route('/',paymentRouter)
+
 const port=3000
 serve({
     fetch:app.fetch,
