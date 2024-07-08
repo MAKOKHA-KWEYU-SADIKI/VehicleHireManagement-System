@@ -99,6 +99,7 @@ Content-Type: application/json
 DELETE http://localhost:3000/locate/7
 ###
 GET http://localhost:3000/customer
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDM0Mjg1fQ.885h7vZHJMcybnA9TKytxdVrO_0iqsSCF1ViCq5g29M
 ###
 GET http://localhost:3000/customer/1
 ###
@@ -173,7 +174,7 @@ POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-"user_id":1,
+"user_id":3,
 "email":"abdulrahman@alli",
 "password":"pass123",
 "role":"admin"
@@ -190,14 +191,16 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
 ###
-GET http://localhost:3000/auth/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwMzc1MzUwfQ.sDQJsv5QFVYj8zG2a0qDNz_MzUUMmC44BuLIZbSLw-Q
+GET http://localhost:3000/user/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
 ###
-GET http://localhost:3000/auth/user/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwMzc1NTQ3fQ.rtS0JCJxl4ZuK0it8nsyFxXuLqKUlKjIX7MzxwgsdY4
+DELETE  http://localhost:3000/user/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
 ###
 POST http://localhost:3000/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
 Content-Type: application/json
 
 {
@@ -206,7 +209,8 @@ Content-Type: application/json
 "contact_phone":"+2547634783437"
 }
 ###
-PUT http://localhost:3000/user/8
+PUT http://localhost:3000/user/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
 Content-Type: application/json
 
 {
@@ -214,4 +218,3 @@ Content-Type: application/json
 "email":"abdulrahman@gmail.com"
 }
 ###
-DELETE http://localhost:3000/user/7
