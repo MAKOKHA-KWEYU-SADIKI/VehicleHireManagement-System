@@ -14,6 +14,6 @@ vehicleRouter.post("/vehicle",adminRoleAuth, zValidator('json', vehicleSchema, (
     }
 }), createvehicle)
 
-vehicleRouter.put("/vehicle/:id", adminRoleAuth,updatevehicle)
-vehicleRouter.delete("/vehicle/:id",adminRoleAuth, deletevehicle)
+vehicleRouter.put("/vehicle/:id",updatevehicle)
+vehicleRouter.delete("/vehicle/:id", deletevehicle)
 
