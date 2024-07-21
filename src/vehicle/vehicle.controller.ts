@@ -6,7 +6,7 @@ export const listvehicle = async (c: Context) => {
 
         const limit = Number(c.req.query('limit'))
 
-        const data = await vehicleService(limit);
+        const data = await vehicleService();
         if (data == null || data.length == 0) {
             return c.text("vehicle not found", 404)
         }

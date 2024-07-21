@@ -1,14 +1,30 @@
 import {db} from "../drizzle/db"
-import {eq} from "drizzle-orm"
+import {Column, eq} from "drizzle-orm"
 import{TIvehicle,TSvehilcle,TableVehicle}from "../drizzle/schema"
-export const vehicleService = async (limit?: number): Promise<TSvehilcle[] | null> => {
-    if (limit) {
-        return await db.query.TableVehicle.findMany({
-            limit: limit
-        });
-    }
-    return await db.query.TableVehicle.findMany();
+export const vehicleService = async () => {
+    return await db.query.TableVehicle.findMany({
+        columns:{
+            vehicle_id:true,
+            vehicleSpecs_id:true,
+            avalilability:true
+        },
+        with:{
+            vehicle:{
+                columns:{
+                    manufacture:true,
+                    model:true,
+                    engine_capacity:true,
+                    fuel_type:true,
+                    seating_capacity:true,
+                    year:true
+                }
+            }
+        }
+     
+    })
 }
+  
+ 
 
 export const getvehicleService = async (id: number) => {
     return await db.query.TableVehicle.findFirst({
@@ -21,15 +37,6 @@ export const createvehicleService = async (user: TIvehicle):Promise<string> => {
     return "vehicle added successfully";
 }
 
-// export const updatevehicleService = async (id: number, user: TIvehicle)=> {
-//     await db.update(TableVehicle).set(user).where(eq(TableVehicle.vehicleSpecs_id, id))
-//     return "vehicle updated successfully";
-// }
-
-// export const deletevehicleService = async (id: number) => {
-//     await db.delete(TableVehicle).where(eq(TableVehicle.vehicleSpecs_id, id))
-//     return "vehicle removed successfully";
-// }
 export const updatevehicleService = async (id: number, vehicle: TIvehicle)=> {
     await db.update(TableVehicle).set(vehicle).where(eq(TableVehicle.vehicleSpecs_id, id))
     return "vehicle updated successfully";

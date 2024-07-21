@@ -1,10 +1,13 @@
 
 ###
 GET http://localhost:3000/vehicle
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRxdWVAMTIiLCJyb2xlIjoidXNlciIsImV4cCI6MTcyMTE1MzY5Nn0.D0VeWWxIBeRcm4tn_HRruEi434EHwB5SU4hNYd6VOMw
 ###
-GET http://localhost:3000/vehicle/2
+GET http://localhost:3000/vehicle/1
+Authorization: 
 ###
 POST http://localhost:3000/vehicle
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDM0Mjg1fQ.885h7vZHJMcybnA9TKytxdVrO_0iqsSCF1ViCq5g29M 
 Content-Type: application/json
 
 {
@@ -13,6 +16,7 @@ Content-Type: application/json
 }
 ###
 PUT http://localhost:3000/vehicle/1
+Authorization: 
 Content-Type: application/json
 
 {
@@ -67,16 +71,19 @@ Content-Type: application/json
     "status": "done"
 }
 ###
-PUT http://localhost:3000/manage/2
+PUT http://localhost:3000/manage/4
 Content-Type: application/json
 
 {
-"status": "done"
+"status": "done",
+"date":"july 10th",
+"current_value": "1000000500"
 }
 ###
 DELETE http://localhost:3000/manage/7
+Authorization:
 ###
-GET http://localhost:3000/locate
+GET http://localhost:3000/customer
 ###
 GET http://localhost:3000/locate/1
 ###
@@ -99,19 +106,19 @@ Content-Type: application/json
 DELETE http://localhost:3000/locate/7
 ###
 GET http://localhost:3000/customer
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDM0Mjg1fQ.885h7vZHJMcybnA9TKytxdVrO_0iqsSCF1ViCq5g29M
+
 ###
-GET http://localhost:3000/customer/1
+GET http://localhost:3000/customer
 ###
 POST http://localhost:3000/customer
 Content-Type: application/json
 
 {
   
-  "user_id": 3,
-  "subject": "HIRING",
-  "description": "need a vehicle",
-  "status": "pending"
+    
+    "subject": "sevice",
+    "description": "Am greatful of your prestigeus car service",
+    "status": "done"
 }
 ###
 PUT http://localhost:3000/customer/1
@@ -124,32 +131,44 @@ Content-Type: application/json
 DELETE http://localhost:3000/customer/7
 ###
 GET http://localhost:3000/book
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIxMjU1NDU4fQ.fM0AgDJWYtsnRVpak-CM2s6dGvufa9YxP3gtLLEY42s
 ###
 GET http://localhost:3000/book/6
 ###
 POST http://localhost:3000/book
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNzA0MDgzfQ.Pw3CLYbMk7ZZOYJlPclnJkoBP3Qr_pjVKlWzuJz-__M
 Content-Type: application/json
 
 {
+
 "full_name":"Abdurahman",
 "email":"abdulrahman@gmail.com",
 "contact_phone":"+2547634783437"
 }
 ###
-PUT http://localhost:3000/book/8
+PUT http://localhost:3000/manage/3
 Content-Type: application/json
 
 {
-"full_name":"Abdurahman",
-"email":"abdulrahman@gmail.com"
+"acquisition_date": "3 june",
+"depreciation_rate": "6%",
 }
 ###
-DELETE http://localhost:3000/book/7
-
+DELETE http://localhost:3000/book
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRxdWVAMTIiLCJyb2xlIjoidXNlciIsImV4cCI6MTcyMTI1NTM3MX0.OClM_moFz6-S-1DzCXDVbf2zqS3PvKeyyQ9keUk9QDs
 ###
 GET http://localhost:3000/payment
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWRxdWVAMTIiLCJyb2xlIjoidXNlciIsImV4cCI6MTcyMDcwNDM1Mn0.EvuQqccBHlVo4bocJ2YWJK_ANqTTEDbRnCC6cb7Dciw
 ###
-GET http://localhost:3000/payment/1
+GET http://localhost:3000/manage
+
+###
+PUT http://localhost:3000/book/2
+Content-Type: application/json
+
+{
+ "total_amount": "70000000"
+}
 ###
 POST http://localhost:3000/payment
 Content-Type: application/json
@@ -168,39 +187,49 @@ Content-Type: application/json
 "email":"abdulrahman@gmail.com"
 }
 ###
-DELETE http://localhost:3000/payment/7
+GET http://localhost:3000/customer
 ###
 POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-"user_id":3,
-"email":"abdulrahman@alli",
-"password":"pass123",
+"full_name":"Abdirahman Alli",
+"email":"abdirahman@alli",
+"contact_phone":"0765433442",
+"adress":"Riyadh",
+"password":"kms@@17k",
 "role":"admin"
 }
+###
+PUT http://localhost:3000/user/10
+Content-Type: application/json
 
+{
+"full_name":"Abdirahman",
+"email":"abdulrahmarn@all",
+"contact_phone":"076543344223"
+}
 ###
 POST  http://localhost:3000/login
 Content-Type: application/json
 
 {
-"email":"abdulrahman@alli",
-"password":"pass123"
+"email":"abdulrahmarn@all",
+"password":"kms21"
 }
 
 ###
-GET http://localhost:3000/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
+GET http://localhost:3000/user/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIxMjI2ODc0fQ.CWlwQyttuP25_xe44oh6ugi9HQK1-S6tb6EhGa-NKBw
 ###
 GET http://localhost:3000/user/1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
+
 ###
-DELETE  http://localhost:3000/user/4
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
+DELETE  http://localhost:3000/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNzEzMzI1fQ.FL4mzmpm3uvcsGEPT3i24290T7-CpqvGGJw-DMY3KZM
 ###
-POST http://localhost:3000/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
+PUT http://localhost:3000/user/10
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoiYWJkdWxyYWhtYXJuQGFsbCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMTI4OTI2NywiZXhwIjoxNzIxMjkyODY3fQ.XKs-ECFsPvWhY5SSs2j6ggCSlBG_424ZCekD_ACJarc
 Content-Type: application/json
 
 {
@@ -210,7 +239,7 @@ Content-Type: application/json
 }
 ###
 PUT http://localhost:3000/user/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDMwODQwfQ.8Nx44Et37VrPtT52Figw19TRTXkMshKEkUxWnQxztdg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYmR1bHJhaG1hbkBhbGxpIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNzEzMzI1fQ.FL4mzmpm3uvcsGEPT3i24290T7-CpqvGGJw-DMY3KZM
 Content-Type: application/json
 
 {
@@ -218,3 +247,20 @@ Content-Type: application/json
 "email":"abdulrahman@gmail.com"
 }
 ###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+"user_id":1,
+"email":"sadque@dsghj",
+"password":"pass67",
+"role":"user"
+}
+###
+POST  http://localhost:3000/login
+Content-Type: application/json
+
+{
+"email":"sadque@12",
+"password":"pass23"
+}

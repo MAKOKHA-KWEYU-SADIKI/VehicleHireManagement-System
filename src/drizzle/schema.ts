@@ -4,16 +4,10 @@ import { PgTable,timestamp,serial,text } from "drizzle-orm/pg-core";
 import { timeStamp } from "console";
 import { integer } from "drizzle-orm/pg-core";
 import { relations,One,Many } from "drizzle-orm";
-export const TableUser=pgTable("users",{
-    user_id:serial("id").primaryKey(),
-    full_name:text("full_name"),
-    email:text("email"),
-    contact_phone:text("contact_phone"),
-    created_at:timestamp("created_at").defaultNow(),
-    updated_at:timestamp("updated_at").defaultNow()
-})
+
 export const TableVehicle=pgTable("vehicle",{
     vehicleSpecs_id:serial("id").primaryKey(),
+    img_url:text("img_url"),
     vehicle_id:integer("vehicleSpec_id").references(()=>TableSpecifications.vehicle_id,{onDelete:"cascade"}),
     avalilability:text("avalilability"),
     created_at:timestamp("created_at").defaultNow(),
@@ -53,15 +47,24 @@ export const TablePayment=pgTable("payment",{
     created_at:timestamp("created_at").defaultNow(),
     updated_at:timestamp("udated_at").defaultNow()
 })
-export const roleEnum=pgEnum("role",["admin","user"])
+export const roleEnum=pgEnum("role",["admin","user","user && admin"])
+export const TableUser=pgTable("users",{
+    user_id:serial("id").primaryKey(),
+    full_name:text("full_name").notNull(),
+    email:text("email").unique(),
+    adress:text("adress").notNull(),
+    contact_phone:text("contact_phone").notNull(),
+    role:roleEnum("role").default("user").notNull(),
+    created_at:timestamp("created_at").defaultNow(),
+    updated_at:timestamp("updated_at").defaultNow()
+})
 export const TableAuthendication=pgTable("Authendication",{
     auth_id:serial("auth_id").primaryKey(),
-    user_id:integer("user_id").references(()=>TableUser.user_id,{onDelete:"cascade"}),
-    password:text("password"),
-    email:text("email"),
+    user_id:integer("user_id").unique().references(()=>TableUser.user_id,{onDelete:"cascade"}),
+    password:text("password").notNull(),
     created_at:timestamp("created_at").defaultNow(),
     updated_at:timestamp("updated_at").defaultNow(),
-    role:roleEnum("role").default("user")
+    
 })
 export const AuthonUser=relations(TableAuthendication,({one})=>({
     user:one(TableUser,{
@@ -142,17 +145,8 @@ export const vehicleLocationRelations = relations(TableBooking, ({ one }) => ({
         references: [TableLocationBranches.location_id]
     })
 }));
-// export const UserAuthRelations = relations(TableUser,({one,many})=>({
-//     authUser:many(TableAuthendication),
-// }));
 
 
-// export const AuthUserRelations = relations(TableAuthendication, ({ one }) => ({
-//     auth: one(TableUser, {
-//         fields: [TableAuthendication.user_id],
-//         references: [TableUser.user_id]
-//     })
-// }));
 export const customerUseRelations = relations(TableUser,({one,many})=>({
     customer:many(TableCustomerSupport),
 }));

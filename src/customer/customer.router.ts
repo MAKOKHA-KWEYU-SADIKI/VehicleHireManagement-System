@@ -5,15 +5,15 @@ import { zValidator } from "@hono/zod-validator";
 import { customerSchema } from "../validator";
 import { adminRoleAuth, userRoleAuth } from "../middleware/midleware";
 export const customerRouter=new Hono();
-customerRouter.get("/customer",adminRoleAuth, listcustomer);
-customerRouter.get("/customer/:id",adminRoleAuth, getcustomer)
+customerRouter.get("/customer", listcustomer);
+customerRouter.get("/customer/:id", getcustomer)
 
-customerRouter.post("/customer",userRoleAuth, zValidator('json', customerSchema, (result, c) => {
+customerRouter.post("/customer", zValidator('json', customerSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
     }
 }), createcustomer)
 
-customerRouter.put("/customer/:id",userRoleAuth, updatecustomer)
-customerRouter.delete("/customer/:id",userRoleAuth, deletecustomer)
+customerRouter.put("/customer/:id", updatecustomer)
+customerRouter.delete("/customer/:id", deletecustomer)
 

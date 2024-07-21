@@ -1,6 +1,6 @@
 import{serve} from '@hono/node-server'
 import { Hono } from 'hono'
-
+import { cors } from 'hono/cors'
 import "dotenv/config"
 import { logger } from 'hono/logger'
 import { csrf } from 'hono/csrf'
@@ -10,6 +10,7 @@ import { HTTPException } from 'hono/http-exception'
 import { prometheus } from '@hono/prometheus'
 
 const app=new Hono()
+app.use('/*', cors())
 
 const customTimeoutException = () =>
     new HTTPException(408, {

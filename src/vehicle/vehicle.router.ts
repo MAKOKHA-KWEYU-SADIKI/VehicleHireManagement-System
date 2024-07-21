@@ -5,7 +5,7 @@ import { zValidator } from "@hono/zod-validator";
 import { vehicleSchema } from "../validator";
 import { adminRoleAuth,userRoleAuth,userOrAdminRoleAuth } from '../middleware/midleware'
 export const vehicleRouter=new Hono();
-vehicleRouter.get("/vehicle",userRoleAuth, listvehicle);
+vehicleRouter.get("/vehicle", listvehicle);
 vehicleRouter.get("/vehicle/:id",userRoleAuth, getvehicle)
 
 vehicleRouter.post("/vehicle",adminRoleAuth, zValidator('json', vehicleSchema, (result, c) => {

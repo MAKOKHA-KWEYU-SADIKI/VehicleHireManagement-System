@@ -4,8 +4,8 @@ import { zValidator } from "@hono/zod-validator";
 import { manageSchema } from "../validator";
 import { adminRoleAuth, userRoleAuth } from "../middleware/midleware";
 export const manageRouter=new Hono();
-manageRouter.get("/manage",userRoleAuth, listmanagement);
-manageRouter.get("/manage/:id",adminRoleAuth, getmanagement)
+manageRouter.get("/manage", listmanagement);
+manageRouter.get("/manage/:id", getmanagement)
 
 manageRouter.post("/manage",adminRoleAuth, zValidator('json', manageSchema, (result, c) => {
     if (!result.success) {
@@ -13,6 +13,6 @@ manageRouter.post("/manage",adminRoleAuth, zValidator('json', manageSchema, (res
     }
 }), createmanagement)
 
-manageRouter.put("/manage/:id",adminRoleAuth, updatemanagement)
-manageRouter.delete("/manage/:id",adminRoleAuth, deletemanagement)
+manageRouter.put("/manage/:id", updatemanagement)
+manageRouter.delete("/manage/:id", deletemanagement)
 

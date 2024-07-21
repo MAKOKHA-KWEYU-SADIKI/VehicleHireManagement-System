@@ -2,7 +2,8 @@ import {number, z} from "zod"
 export const userSchema=z.object({
     full_name:z.string(),
     email:z.string(),
-    contact_phone:z.string()
+    contact_phone:z.string(),
+    
 })
 export const vehicleSchema=z.object({
     vehicle_id:z.number(),
@@ -18,6 +19,11 @@ export const specsSchema=z.object({
     color:z.string(),
     seating_capacity:z.number(),
     features:z.string()
+})
+export const authSchema=z.object({
+    auth_id: z.number().int().optional(),
+    user_id: z.number().int().optional(),
+    password: z.string().max(255),
 })
 export const manageSchema=z.object({
     vehicle_id: z.number(),
@@ -36,7 +42,7 @@ export const locateSchema=z.object({
 
 })
 export const customerSchema=z.object({
-    user_id:z.number(),
+    user_id:z.number().optional(),
     subject:z.string(),
     description:z.string(),
     status:z.string()
@@ -63,8 +69,8 @@ export const loginSchema=z.object({
     password:z.string()
 })
 export const registerSchema=z.object({
-    user_id:z.number(),
-    email:z.string(),
-    password:z.string(),
-    role:z.string()
+    full_name: z.string(),
+    email: z.string().email(), 
+    contact_phone: z.string().min(10).max(10),
+    adress: z.string()
 })
