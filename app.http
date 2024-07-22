@@ -25,7 +25,7 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/vehicle/1
 ###
-GET http://localhost:3000/specs
+GET http://localhost:3000/vehicle
 ###
 GET http://localhost:3000/specs/1
 ###
@@ -80,8 +80,12 @@ Content-Type: application/json
 "current_value": "1000000500"
 }
 ###
-DELETE http://localhost:3000/manage/7
-Authorization:
+PUT  http://localhost:3000/user/13
+Content-Type: application/json
+
+{
+"role":"admin"
+}
 ###
 GET http://localhost:3000/customer
 ###
@@ -187,7 +191,35 @@ Content-Type: application/json
 "email":"abdulrahman@gmail.com"
 }
 ###
-GET http://localhost:3000/customer
+GET http://localhost:3000/specs
+###
+POST http://localhost:3000/specs
+Content-Type: application/json
+
+{
+"manufacture": "BMW",
+    "model": "car",
+    "year": "2024",
+    "fuel_type": "disel",
+    "engine_capacity": "234ffds",
+    "transmission": "ferried",
+    "color": "blue",
+    "seating_capacity": 4,
+    "features": "medium"
+}
+###
+###
+PUT http://localhost:3000/specs/1
+Content-Type: application/json
+
+{
+"manufacture": "BMW",
+    "engine_capacity": "234ffds",
+    "transmission": "ferried",
+    "color": "blue",
+    "seating_capacity": 4,
+    "features": "medium"
+}
 ###
 POST http://localhost:3000/register
 Content-Type: application/json
